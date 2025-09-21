@@ -12,11 +12,15 @@
     <link rel="preconnect" href="https://cdnjs.cloudflare.com">
     <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/webfonts/fa-brands-400.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/webfonts/fa-solid-900.woff2" as="font" type="font/woff2" crossorigin>
-    <link rel="preload" href="images/images/dppic.jpeg" as="image">
+    <link rel="preload" href="images/images/dppic.jpeg" as="image" fetchpriority="high">
+    <link rel="preload" href="src/index.css" as="style">
     <link rel="preload" href="src/style.css" as="style">
     
     <!-- Stylesheets -->
-    <link rel="stylesheet" href="src/style.css" media="all">
+    <!-- Tailwind/index styles non-blocking (load first) -->
+    <link rel="stylesheet" href="src/index.css" media="print" onload="this.media='all'">
+    <!-- Custom styles non-blocking (load after Tailwind) -->
+    <link rel="stylesheet" href="src/style.css" media="print" onload="this.media='all'">
     
     <!-- Font Awesome with font-display optimization -->
     <link rel="preconnect" href="https://cdnjs.cloudflare.com">
@@ -43,6 +47,8 @@
     <!-- Fallback for font loading -->
     <noscript>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+        <link rel="stylesheet" href="src/index.css">
+        <link rel="stylesheet" href="src/style.css">
     </noscript>
 </head>
 <body>
