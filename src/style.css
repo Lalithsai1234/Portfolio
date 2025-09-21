@@ -1,5 +1,5 @@
-/* --- Google Fonts --- */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+/* --- Optimized System Fonts --- */
+/* Using system fonts for better performance - no 3rd party dependencies */
 
 /* --- CSS Variables for Modern Theming --- */
 :root {
@@ -68,13 +68,15 @@ html {
 }
 
 body {
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Helvetica Neue', Arial, sans-serif;
     background: var(--bg-primary);
     color: var(--text-primary);
     overflow-x: hidden;
     line-height: 1.6;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    font-feature-settings: 'kern' 1;
+    text-rendering: optimizeLegibility;
 }
 
 /* --- Custom Scrollbar --- */
@@ -264,6 +266,8 @@ nav .navlinks a:hover::after {
 
 .hero-text {
     max-width: 600px;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
 }
 
 .hero-text h5 {
@@ -280,13 +284,15 @@ nav .navlinks a:hover::after {
 
 .hero-text h1 {
     font-size: clamp(2.5rem, 6vw, 4rem);
-    font-weight: 800;
-    line-height: 1.1;
+    font-weight: 700;
+    line-height: 1.2;
     margin-bottom: var(--spacing-lg);
     background: var(--gradient-text);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
+    letter-spacing: -0.02em;
+    padding: 0.1em 0;
 }
 
 .hero-text p {

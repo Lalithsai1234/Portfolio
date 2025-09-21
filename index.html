@@ -3,10 +3,47 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Lalith Sai - Full Stack Developer & Software Engineer. Passionate about creating innovative web applications with modern technologies.">
+    <meta name="robots" content="index, follow">
+    <meta name="theme-color" content="#6366f1">
     <title>Lalith Sai - Full Stack Developer</title>
-    <link rel="stylesheet" href="src/style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Preload critical resources -->
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/webfonts/fa-brands-400.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/webfonts/fa-solid-900.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="images/images/dppic.jpeg" as="image">
+    <link rel="preload" href="src/style.css" as="style">
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="src/style.css" media="all">
+    
+    <!-- Font Awesome with font-display optimization -->
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" media="print" onload="this.media='all'">
+    
+    <!-- Custom CSS to add font-display swap to Font Awesome -->
+    <style>
+        @font-face {
+            font-family: "Font Awesome 6 Brands";
+            font-style: normal;
+            font-weight: 400;
+            font-display: swap;
+            src: url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/webfonts/fa-brands-400.woff2") format("woff2");
+        }
+        @font-face {
+            font-family: "Font Awesome 6 Free";
+            font-style: normal;
+            font-weight: 900;
+            font-display: swap;
+            src: url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/webfonts/fa-solid-900.woff2") format("woff2");
+        }
+    </style>
+    
+    <!-- Fallback for font loading -->
+    <noscript>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    </noscript>
 </head>
 <body>
     <!-- Header -->
@@ -54,7 +91,7 @@
                     </div>
                 </div>
                 <div class="hero-pic">
-                    <img src="images/images/dppic.jpeg" alt="Lalith Sai">
+                    <img src="images/images/dppic.jpeg" alt="Lalith Sai - Full Stack Developer" width="400" height="400" fetchpriority="high">
                 </div>
             </div>
         </div>
@@ -199,7 +236,7 @@
             <div class="projects-grid">
                 <div class="project-card" data-category="web">
                     <div class="project-image">
-                        <img src="images/images/SkillSprint.png" alt="SkillSprint">
+                        <img src="images/images/SkillSprint.png" alt="SkillSprint" loading="lazy">
                         <div class="project-overlay">
                             <a href="" class="project-link"><i class="fas fa-external-link-alt"></i></a>
                             <a href="https://github.com/Lalithsai1234/SkillSprint" class="project-link"><i class="fab fa-github"></i></a>
@@ -221,7 +258,7 @@ streak tracking, XP-based leaderboard, and adaptive themes to boost user retenti
                 </div>
                 <div class="project-card" data-category="web">
                     <div class="project-image">
-                        <img src="images/images/CampusConnect.png" alt="CampusConnect">
+                        <img src="images/images/CampusConnect.png" alt="CampusConnect" loading="lazy">
                         <div class="project-overlay">
                             <a href="" class="project-link"><i class="fas fa-external-link-alt"></i></a>
                             <a href="" class="project-link"><i class="fab fa-github"></i></a>
@@ -243,7 +280,7 @@ event discovery and student engagement</p>
                 </div>
                 <div class="project-card" data-category="web">
                     <div class="project-image">
-                        <img src="images/images/NumPy learning Hub.png" alt="NumPy Learning Hub">
+                        <img src="images/images/NumPy learning Hub.png" alt="NumPy Learning Hub" loading="lazy">
                         <div class="project-overlay">
                             <a href="https://numpy-learning-hub.vercel.app/" class="project-link"><i class="fas fa-external-link-alt"></i></a>
                             <a href="https://github.com/Lalithsai1234/NumPy-Learning-Hub" class="project-link"><i class="fab fa-github"></i></a>
@@ -264,7 +301,7 @@ learning. (Pinnacle Labs Internship).</p>
                 </div>
                 <div class="project-card" data-category="web">
                     <div class="project-image">
-                        <img src="images/images/screencapture-doctors-appointment-app-psi-vercel-app-2025-08-23-00_27_36.png" alt="hosiptal management system">
+                        <img src="images/images/screencapture-doctors-appointment-app-psi-vercel-app-2025-08-23-00_27_36.png" alt="hosiptal management system" loading="lazy">
                         <div class="project-overlay">
                             <a href="https://doctors-appointment-app-psi.vercel.app/" class="project-link"><i class="fas fa-external-link-alt"></i></a>
                             <a href="https://github.com/Lalithsai1234/full-repo/tree/50d3ca24af257a4b291b08f0b448979bc5365bb3/projects/DoctorsAppointmentApp-main" class="project-link"><i class="fab fa-github"></i></a>
@@ -284,7 +321,7 @@ learning. (Pinnacle Labs Internship).</p>
 
                 <div class="project-card" data-category="web">
                     <div class="project-image">
-                        <img src="images/images/screencapture-127-0-0-1-5500-projects-Movie-web-index-html-2025-08-23-00_36_47.png" alt="OTT Platform">
+                        <img src="images/images/screencapture-127-0-0-1-5500-projects-Movie-web-index-html-2025-08-23-00_36_47.png" alt="OTT Platform" loading="lazy">
                         <div class="project-overlay">
                             <!-- <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i></a> -->
                             <a href="https://github.com/Lalithsai1234/full-repo/tree/50d3ca24af257a4b291b08f0b448979bc5365bb3/projects/Movie%20web" class="project-link"><i class="fab fa-github"></i></a>
@@ -304,7 +341,7 @@ learning. (Pinnacle Labs Internship).</p>
 
                 <div class="project-card" data-category="web">
                     <div class="project-image">
-                        <img src="images/images/screencapture-127-0-0-1-5500-projects-TravelDream-index-html-2025-08-23-00_47_47.png" alt="Weather Dashboard">
+                        <img src="images/images/screencapture-127-0-0-1-5500-projects-TravelDream-index-html-2025-08-23-00_47_47.png" alt="Weather Dashboard" loading="lazy">
                         <div class="project-overlay">
                             <!-- <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i></a> -->
                             <a href="https://github.com/Lalithsai1234/Travel-trip-web" class="project-link"><i class="fab fa-github"></i></a>
@@ -324,7 +361,7 @@ learning. (Pinnacle Labs Internship).</p>
 
                 <!-- <div class="project-card" data-category="fullstack">
                     <div class="project-image">
-                        <img src="https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Social Media Platform">
+                        <img src="https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Social Media Platform" loading="lazy">
                         <div class="project-overlay">
                             <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i></a>
                             <a href="#" class="project-link"><i class="fab fa-github"></i></a>
@@ -344,7 +381,7 @@ learning. (Pinnacle Labs Internship).</p>
 
                 <!-- <div class="project-card" data-category="mobile">
                     <div class="project-image">
-                        <img src="https://images.pexels.com/photos/147413/twitter-facebook-together-exchange-of-information-147413.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Mobile App">
+                        <img src="https://images.pexels.com/photos/147413/twitter-facebook-together-exchange-of-information-147413.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Mobile App" loading="lazy">
                         <div class="project-overlay">
                             <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i></a>
                             <a href="#" class="project-link"><i class="fab fa-github"></i></a>
@@ -364,7 +401,7 @@ learning. (Pinnacle Labs Internship).</p>
 
                 <div class="project-card" data-category="web">
                     <div class="project-image">
-                        <img src="images/images/screencapture-localhost-5173-lalithsaimeesala123-gmail-com-2025-08-23-00_56_21.png" alt="Portfolio Website">
+                        <img src="images/images/screencapture-localhost-5173-lalithsaimeesala123-gmail-com-2025-08-23-00_56_21.png" alt="Portfolio Website" loading="lazy">
                         <div class="project-overlay">
                             <a href="https://portfolio-eight-beta-kc0pls3n92.vercel.app/" class="project-link"><i class="fas fa-external-link-alt"></i></a>
                             <a href="https://github.com/Lalithsai1234/Portfolio" class="project-link"><i class="fab fa-github"></i></a>
@@ -571,5 +608,24 @@ provement in Google Lighthouse scores and faster initial load times</li>
     </footer>
 
     <script type="module" src="src/script.js"></script>
+    
+    <!-- Performance optimization script -->
+    <script>
+        // Preload fonts with high priority for LCP element
+        if ('fonts' in document) {
+            document.fonts.load('800 4rem Inter').then(() => {
+                // Font is loaded, LCP element can render immediately
+                console.log('Critical font loaded');
+            });
+        }
+        
+        // Optimize images loading
+        const heroImg = document.querySelector('.hero-pic img');
+        if (heroImg) {
+            heroImg.addEventListener('load', () => {
+                heroImg.style.opacity = '1';
+            });
+        }
+    </script>
 </body>
 </html>
