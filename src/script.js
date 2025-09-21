@@ -282,6 +282,18 @@ ACHIEVEMENTS
 
 // Initialize animations on page load
 document.addEventListener('DOMContentLoaded', () => {
+    // Initialize Liquid Ether background (vanilla)
+    import('./liquid-ether.js').then(({ initLiquidEther }) => {
+        initLiquidEther({
+            colors: ['#5227FF', '#FF9FFC', '#B19EEF'],
+            blobCount: 6,
+            speed: 0.45,
+            opacity: 0.16,
+            interactive: true,
+            mouseForce: 24,
+          });
+    }).catch(() => {/* ignore if module fails */});
+
     // Add initial animation classes
     setTimeout(() => {
         document.querySelector('.hero-text').classList.add('animate-in');
