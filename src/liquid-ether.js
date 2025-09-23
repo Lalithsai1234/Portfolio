@@ -10,7 +10,9 @@ export function initLiquidEther(options = {}) {
     minRadius = 180,
     maxRadius = 360,
   opacity = 0.18, // restored original brightness
-  brightness = 1.0, // full brightness multiplier
+    brightness = 1.0, // full brightness multiplier (desktop)
+    mobileBrightness = 0.6, // dimmer on mobile
+    mobileMaxWidth = 768,   // breakpoint for mobile brightness
     responsiveScale = 1,
     interactive = true,
     mouseForce = 20,
@@ -29,6 +31,7 @@ export function initLiquidEther(options = {}) {
   const ctx = canvas.getContext('2d', { alpha: true });
   let width = 0, height = 0, dpr = Math.min(window.devicePixelRatio || 1, 2);
   let radiusScale = 1;
+  let currentBrightness = brightness;
 
   const clamp = (n, min, max) => Math.max(min, Math.min(max, n));
   const computeRadiusScale = () => {
@@ -36,12 +39,14 @@ export function initLiquidEther(options = {}) {
     const basis = Math.min(window.innerWidth, window.innerHeight);
     return clamp(basis / 1440, 0.55, 1);
   };
+  const computeBrightness = () => (window.innerWidth <= mobileMaxWidth ? mobileBrightness : brightness);
 
   function resize() {
     width = Math.floor(window.innerWidth);
     height = Math.floor(window.innerHeight);
     const scale = responsiveScale;
     radiusScale = computeRadiusScale();
+    currentBrightness = computeBrightness();
     canvas.width = Math.floor(width * dpr * scale);
     canvas.height = Math.floor(height * dpr * scale);
     canvas.style.width = width + 'px';
@@ -118,7 +123,7 @@ export function initLiquidEther(options = {}) {
 
       const grad = ctx.createRadialGradient(b.x, b.y, 0, b.x, b.y, r);
       const col = hexToRgb(b.color);
-      const effectiveOpacity = clamp(opacity * brightness, 0, 1);
+  const effectiveOpacity = clamp(opacity * currentBrightness, 0, 1);
       grad.addColorStop(0, `rgba(${col.r}, ${col.g}, ${col.b}, ${Math.min(1, effectiveOpacity * 1.4)})`);
       grad.addColorStop(1, `rgba(${col.r}, ${col.g}, ${col.b}, 0)`);
 

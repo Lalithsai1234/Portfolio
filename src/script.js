@@ -326,6 +326,8 @@ window.addEventListener('load', () => {
             maxRadius: 360,
             opacity: 0.18,
             brightness: 1.0,
+            mobileBrightness: 0.55,
+            mobileMaxWidth: 768,
             responsiveScale: 1,
             interactive: true,
             mouseForce: 20
