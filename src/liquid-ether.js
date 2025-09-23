@@ -9,7 +9,8 @@ export function initLiquidEther(options = {}) {
     speed = 0.35,
     minRadius = 180,
     maxRadius = 360,
-    opacity = 0.18,
+  opacity = 0.18, // restored original brightness
+  brightness = 1.0, // full brightness multiplier
     responsiveScale = 1,
     interactive = true,
     mouseForce = 20,
@@ -27,11 +28,20 @@ export function initLiquidEther(options = {}) {
 
   const ctx = canvas.getContext('2d', { alpha: true });
   let width = 0, height = 0, dpr = Math.min(window.devicePixelRatio || 1, 2);
+  let radiusScale = 1;
+
+  const clamp = (n, min, max) => Math.max(min, Math.min(max, n));
+  const computeRadiusScale = () => {
+    // Scale blob size by viewport, smaller screens -> smaller blobs
+    const basis = Math.min(window.innerWidth, window.innerHeight);
+    return clamp(basis / 1440, 0.55, 1);
+  };
 
   function resize() {
     width = Math.floor(window.innerWidth);
     height = Math.floor(window.innerHeight);
     const scale = responsiveScale;
+    radiusScale = computeRadiusScale();
     canvas.width = Math.floor(width * dpr * scale);
     canvas.height = Math.floor(height * dpr * scale);
     canvas.style.width = width + 'px';
@@ -54,7 +64,7 @@ export function initLiquidEther(options = {}) {
       y: rand(r, height - r),
       vx: Math.cos(angle) * speed,
       vy: Math.sin(angle) * speed,
-      r,
+      baseR: r,
       color,
     };
   });
@@ -81,19 +91,20 @@ export function initLiquidEther(options = {}) {
     ctx.globalCompositeOperation = 'lighter';
 
     for (const b of blobs) {
+      const r = b.baseR * radiusScale;
       // Simple physics with boundary bounce
       b.x += b.vx;
       b.y += b.vy;
 
-      if (b.x - b.r < 0 || b.x + b.r > width) b.vx *= -1;
-      if (b.y - b.r < 0 || b.y + b.r > height) b.vy *= -1;
+      if (b.x - r < 0 || b.x + r > width) b.vx *= -1;
+      if (b.y - r < 0 || b.y + r > height) b.vy *= -1;
 
       // Mouse interaction: gentle push away
       if (interactive && mouse.active) {
         const dx = b.x - mouse.x;
         const dy = b.y - mouse.y;
         const dist2 = dx*dx + dy*dy;
-        const maxD = (b.r + 120);
+        const maxD = (r + 120);
         if (dist2 < maxD * maxD) {
           const d = Math.sqrt(dist2) || 1;
           const force = (1 - d / maxD) * mouseForce * 0.02;
@@ -105,14 +116,15 @@ export function initLiquidEther(options = {}) {
         }
       }
 
-      const grad = ctx.createRadialGradient(b.x, b.y, 0, b.x, b.y, b.r);
+      const grad = ctx.createRadialGradient(b.x, b.y, 0, b.x, b.y, r);
       const col = hexToRgb(b.color);
-      grad.addColorStop(0, `rgba(${col.r}, ${col.g}, ${col.b}, ${Math.min(1, opacity * 1.4)})`);
+      const effectiveOpacity = clamp(opacity * brightness, 0, 1);
+      grad.addColorStop(0, `rgba(${col.r}, ${col.g}, ${col.b}, ${Math.min(1, effectiveOpacity * 1.4)})`);
       grad.addColorStop(1, `rgba(${col.r}, ${col.g}, ${col.b}, 0)`);
 
       ctx.fillStyle = grad;
       ctx.beginPath();
-      ctx.arc(b.x, b.y, b.r, 0, Math.PI * 2);
+      ctx.arc(b.x, b.y, r, 0, Math.PI * 2);
       ctx.fill();
     }
 

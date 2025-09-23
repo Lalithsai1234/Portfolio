@@ -282,18 +282,6 @@ ACHIEVEMENTS
 
 // Initialize animations on page load
 document.addEventListener('DOMContentLoaded', () => {
-    // Initialize Liquid Ether background (vanilla)
-    import('./liquid-ether.js').then(({ initLiquidEther }) => {
-        initLiquidEther({
-            colors: ['#5227FF', '#FF9FFC', '#B19EEF'],
-            blobCount: 6,
-            speed: 0.45,
-            opacity: 0.16,
-            interactive: true,
-            mouseForce: 24,
-          });
-    }).catch(() => {/* ignore if module fails */});
-
     // Add initial animation classes
     setTimeout(() => {
         document.querySelector('.hero-text').classList.add('animate-in');
@@ -327,4 +315,20 @@ window.addEventListener('load', () => {
         const originalText = heroTitle.textContent;
         typeWriter(heroTitle, originalText, 50);
     }
+
+    // Initialize Liquid Ether background (vanilla version)
+    import('./liquid-ether.js').then(({ initLiquidEther }) => {
+        initLiquidEther({
+            colors: ['#5227FF', '#FF9FFC', '#B19EEF'],
+            blobCount: 6,
+            speed: 0.35,
+            minRadius: 180,
+            maxRadius: 360,
+            opacity: 0.18,
+            brightness: 1.0,
+            responsiveScale: 1,
+            interactive: true,
+            mouseForce: 20
+        });
+    }).catch(() => {/* ignore if module fails to load */});
 });
